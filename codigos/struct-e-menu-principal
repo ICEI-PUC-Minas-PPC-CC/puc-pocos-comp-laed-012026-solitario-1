@@ -1,0 +1,68 @@
+/*Projeto: Sistema de Cadastro de Produtos
+  Integrante: Joao Victor
+  */
+
+#include <stdio.h>
+#include <string.h>
+
+struct Produto {
+    int codigo;
+    char nome[50];
+    float preco;
+    int quantidade;
+    int ativo;
+};
+
+int main(){
+    struct Produto;
+    int total = 0;
+    int opcao;
+
+    do {
+        printf("\n--- MENU ---\n");
+        printf("1 - Inserir Produto\n");
+        printf("2 - Listar Produto\n");
+        printf("3 - Editar Produto\n");
+        printf("4 - Excluir Produto\n");
+        printf("5 - Pesquisar Produto\n");
+        printf("6 - Resumo\n");
+        printf("0 - Sair\n");
+        printf("Escolha: ");
+        scanf("%d", &opcao);
+
+        switch(opcao) {
+            case 1:
+                printf("Inserindo Produto: ");
+            break;
+
+            case 2:
+                printf("Listando Produto: ");
+            break;
+
+            case 3:
+                printf("Editando Produto: ");
+            break;
+
+            case 4:
+                printf("Excluindo Produto: ");
+            break;
+
+            case 5:
+                printf("Pesquisando Produto:");
+            break;
+
+            case 6:
+                printf("Resumindo:");
+            break;
+
+            case 0:
+                printf("Encerrando");
+            break;
+        }
+
+    } while (opcao != 0);
+
+
+
+
+}
