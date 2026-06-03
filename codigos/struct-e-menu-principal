@@ -5,16 +5,45 @@
 #include <stdio.h>
 #include <string.h>
 
-struct Produto {
+#define MAX 10
+
+// Struct
+typedef struct Produto {
     int codigo;
     char nome[50];
     float preco;
     int quantidade;
     int ativo;
-};
+} Produto;
+
+//Inserir Produto
+int inserirProduto(Produto produtos[], int total){
+    if (total >= MAX){
+        printf("Limite de produtos atingidos!\n");
+        return total;
+    }
+
+    printf("Digite o codigo: ");
+    scanf("%d", &produtos[total].codigo);
+
+    printf("Digite o nome: ");
+    scanf(" %[^\n", &produtos[total].nome);
+
+    printf("Digite o preco: ");
+    scanf("%f", &produtos[total].preco);
+
+    printf("Digite a quantidade: ");
+    scanf("%d", &produtos[total].quantidade);
+
+    produtos[total].ativo = 1;
+
+    printf("Produto cadastrado com sucesso!\n");
+
+    return total + 1;
+}
 
 int main(){
-    struct Produto;
+    Produto produtos[MAX];
     int total = 0;
     int opcao;
 
