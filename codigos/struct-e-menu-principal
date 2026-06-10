@@ -42,6 +42,28 @@ int inserirProduto(Produto produtos[], int total){
     return total + 1;
 }
 
+
+//Listar Produtos
+void listarProdutos(Produto produtos[],int total){
+    int i;
+    int encontrou = 0;
+
+    for(i = 0; i < total; i++){
+        if(produtos[i].ativo == 1){
+            printf("\nCodigo: %d\n",produtos[i].codigo);
+            printf("Nome:  %s\n", produtos[i].nome);
+            printf("Preco: %2f\n", produtos[i].preco);
+            printf("Quantidade: %d/n", produtos[i].quantidade);
+
+            encontrou = 1;
+        }
+    }
+
+    if (encontrou == 0){
+        printf("Nenhum produto cadastrado.\n");
+    }
+}
+
 int main(){
     Produto produtos[MAX];
     int total = 0;
@@ -61,11 +83,12 @@ int main(){
 
         switch(opcao) {
             case 1:
-                printf("Inserindo Produto: ");
+                total =
+                inserirProduto(produtos,total);
             break;
 
             case 2:
-                printf("Listando Produto: ");
+                listarProdutos(produtos,total);
             break;
 
             case 3:
@@ -91,7 +114,7 @@ int main(){
 
     } while (opcao != 0);
 
-
-
+    return 0;
 
 }
+
