@@ -27,7 +27,7 @@ int inserirProduto(Produto produtos[], int total){
     scanf("%d", &produtos[total].codigo);
 
     printf("Digite o nome: ");
-    scanf(" %[^\n", &produtos[total].nome);
+    scanf(" %[^\n]", &produtos[total].nome);
 
     printf("Digite o preco: ");
     scanf("%f", &produtos[total].preco);
