@@ -53,7 +53,7 @@ void listarProdutos(Produto produtos[],int total){
             printf("\nCodigo: %d\n",produtos[i].codigo);
             printf("Nome:  %s\n", produtos[i].nome);
             printf("Preco: %2f\n", produtos[i].preco);
-            printf("Quantidade: %d/n", produtos[i].quantidade);
+            printf("Quantidade: %d\n", produtos[i].quantidade);
 
             encontrou = 1;
         }
@@ -63,6 +63,58 @@ void listarProdutos(Produto produtos[],int total){
         printf("Nenhum produto cadastrado.\n");
     }
 }
+
+
+//Editar Produto
+void editarProduto(Produto produtos[], int total){
+    int codigo, i;
+
+    printf("Digite o codigo do produto: ");
+    scanf("%d", &codigo);
+
+    for(i = 0; i < total; i++){
+        if(produtos[i].codigo == codigo && produtos[i].ativo == 1){
+
+            printf("Novo nome: ");
+            scanf(" %[^\n]", produtos[i].nome);
+
+            printf("Novo preco: ");
+            scanf("%f", &produtos[i].preco);
+
+            printf("Nova quantidade: ");
+            scanf("%d", &produtos[i].quantidade);
+
+            printf("Produto editado com sucesso\n");
+        return;
+        }
+    }
+
+    printf("Produto nao encontrado.\n");
+}
+
+
+//Pesquisar Produto
+void pesquisarProduto(Produto produtos[], int total){
+    int codigo, i;
+
+    printf("Digite o codigo do produto:");
+    scanf("%d", &codigo);
+
+    for(i = 0; i < total; i++){
+        if(produtos[i].codigo == codigo && produtos[i].ativo == 1){
+
+            printf("\nProduto encontrado:\n");
+            printf("Nome: %s\n", produtos[i].nome);
+            printf("Preco: %.2f\n", produtos[i].preco);
+            printf("Quantidade: %d\n", produtos[i].quantidade);
+
+        return;
+        }
+    }
+
+    printf("Produto não encontrado.\n");
+
+    }
 
 int main(){
     Produto produtos[MAX];
@@ -92,7 +144,7 @@ int main(){
             break;
 
             case 3:
-                printf("Editando Produto: ");
+                editarProduto(produtos,total);
             break;
 
             case 4:
@@ -100,7 +152,7 @@ int main(){
             break;
 
             case 5:
-                printf("Pesquisando Produto:");
+                pesquisarProduto(produtos,total);
             break;
 
             case 6:
