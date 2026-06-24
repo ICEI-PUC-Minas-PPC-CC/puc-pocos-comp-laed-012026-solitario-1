@@ -52,7 +52,7 @@ void listarProdutos(Produto produtos[],int total){
         if(produtos[i].ativo == 1){
             printf("\nCodigo: %d\n",produtos[i].codigo);
             printf("Nome:  %s\n", produtos[i].nome);
-            printf("Preco: %2f\n", produtos[i].preco);
+            printf("Preco: %.2f\n", produtos[i].preco);
             printf("Quantidade: %d\n", produtos[i].quantidade);
 
             encontrou = 1;
@@ -114,7 +114,48 @@ void pesquisarProduto(Produto produtos[], int total){
 
     printf("Produto não encontrado.\n");
 
+}
+
+
+//Excluir Produto
+void excluirProduto(Produto produtos[],int total){
+    int codigo, i;
+
+    printf("Digite o codigo do produto: ");
+    scanf("%d", &codigo);
+
+    for(i = 0; i < total; i++){
+        if(produtos[i].codigo == codigo && produtos[i].ativo == 1){
+            produtos[i].ativo = 0;
+
+            printf("Produto excluido com sucesso!\n");
+        return;
+        }
     }
+
+    printf("Produto nao encontrado.\n");
+}
+
+
+//Resumo
+void resumoProdutos(Produto produtos[], int total){
+    int i;
+    int ativos = 0;
+    float soma = 0;
+
+    for(i = 0; i < total; i++){
+        if(produtos[i].ativo == 1){
+            ativos++;
+            soma += produtos[i].preco;
+        }
+    }
+
+    printf("\nTotal de produtos ativos: %d\n", ativos);
+
+    if(ativos > 0){
+        printf("Media de precos: %.2f\n", soma/ativos);
+    }
+}
 
 int main(){
     Produto produtos[MAX];
@@ -148,7 +189,7 @@ int main(){
             break;
 
             case 4:
-                printf("Excluindo Produto: ");
+                excluirProduto(produtos,total);
             break;
 
             case 5:
@@ -156,11 +197,11 @@ int main(){
             break;
 
             case 6:
-                printf("Resumindo:");
+                resumoProdutos(produtos,total);
             break;
 
             case 0:
-                printf("Encerrando");
+                printf("Encerrando!");
             break;
         }
 
